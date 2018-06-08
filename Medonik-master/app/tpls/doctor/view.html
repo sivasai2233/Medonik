@@ -1,0 +1,111 @@
+<h1>Doctor Page</h1>
+<ol class="breadcrumb">
+	<li>
+		<a href="#">Home</a>
+	</li>
+	<li>
+		<a ui-sref="app.doctors">Doctors</a>
+	</li>
+	<li class="active">{{viewInfo.basicInfo.firstName}}</li>
+</ol>
+
+<div class="panel panel-headerless">
+	<div class="panel-body">
+
+		<div class="member-form-add-header">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+
+					<div class="user-img" ng-show="viewInfo.basicInfo.avatar == undefined">
+						<img src="assets/images/user-4.png" class="img-circle" alt="user-pic" />
+					</div>
+					<div class="user-img" ng-show="viewInfo.basicInfo.avatar !== undefined">
+						<img src="{{viewInfo.basicInfo.avatar}}" class="img-circle" alt="user-pic" width="80" height="80" />
+					</div>
+					<div class="user-name">
+						<h4>
+							<strong>
+								{{viewInfo.basicInfo.firstName}} {{viewInfo.basicInfo.lastName}}
+							</strong>
+						</h4>
+						<span>{{viewInfo.specialization.specialization}}</span>
+					</div>
+
+				</div>
+				<div class="col-md-4 col-sm-4">
+
+					<div class="row">
+						<div class="col-md-6">
+							<h5>
+								{{viewInfo.basicInfo.email}}
+								<br />
+								<small>Email</small>
+							</h5>
+						</div>
+						<div class="col-md-6">
+							<h5>
+								{{viewInfo.basicInfo.mobile}}
+								<br />
+								<small>Mobile</small>
+							</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<h5>
+								{{viewInfo.basicInfo.alternateMobile}}
+								<br />
+								<small>Alternate Mobile</small>
+							</h5>
+						</div>
+						<div class="col-md-6">
+							<h5>
+								{{viewInfo.basicInfo.graduationYear}}
+								<br />
+								<small>Graduation Year</small>
+							</h5>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-4 col-sm-4">
+
+					<div class="row">
+						
+						<div class="col-md-12">
+							<h5>
+								{{viewInfo.basicInfo.officeAddress}}
+								<br />
+								<small>Office Address</small>
+							</h5>
+						</div>
+
+						<div class="col-md-12">
+							<h5>
+								{{viewInfo.basicInfo.residentialAddress}}
+								<br />
+								<small>Residential Address</small>
+							</h5>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Handled Patient List
+	</div>
+
+	<div class="panel-body">
+
+		<p>Folly words widow one downs few age every seven. If miss part by fact he park just shew. Discovered had get considered projection who favourable. Necessary up knowledge it tolerably.</p>
+		<p>Unwilling departure education is be dashwoods or an. Use off agreeable law unwilling sir deficient curiosity instantly. Easy mind life fact with see has bore ten. Parish any chatty can elinor direct for former. Up as meant widow equal an share least.</p>
+
+	</div>
+</div>

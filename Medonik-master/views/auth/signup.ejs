@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Medonik Login Page</title>
+		<link rel="stylesheet" href="/assets/css/bootstrap.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<% if (message.length > 0) { %>
+						<div class="alert alert-danger"><%= message %></div>
+					<% } %>
+					<form action="/admin/signup" method="POST" role="form">
+						<legend>Medonik Signup</legend>
+
+						<div class="form-group">
+							<label for="">First Name</label>
+							<input name="first_name" type="text" class="form-control" id="">
+						</div>
+
+						<div class="form-group">
+							<label for="">Last Name</label>
+							<input name="last_name" type="text" class="form-control" id="">
+						</div>
+
+						<div class="form-group">
+							<label for="">Email</label>
+							<input name="email" type="text" class="form-control" id="">
+						</div>
+
+						<div class="form-group">
+							<label for="">Mobile</label>
+							<input name="mobile" type="text" class="form-control" id="">
+						</div>
+
+						<div class="form-group">
+							<label for="">Password</label>
+							<input name="password" type="text" class="form-control" id="">
+						</div>
+
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+		</div>
+	</body>
+</html>

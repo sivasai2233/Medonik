@@ -1,0 +1,63 @@
+<page-title
+	ng-if="layoutOptions.pageTitles"
+	title="Patients"
+	description="List of All Patients">
+</page-title>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="action-buttons">
+			<a class="btn btn-success" ui-sref="app.patient-create" role="button">Add Patient</a>
+		</div>
+		<div ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
+
+	<!---	<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="col-md-2 col-sm-4 pull-right-sm" ng-show="showCreateBtn">
+					<div class="action-buttons">
+						<a class="btn btn-block btn-secondary" ui-sref="app.patient-create" role="button">Add Patient</a>
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<p ng-hide="patients.length > 0">
+					No records found.
+				</p>
+				<table class="table table-hover members-table middle-align" ng-show="patients.length > 0">
+					<thead>
+						<tr>
+							<th>S.No</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Age</th>
+							<th>Mobile</th>
+							<th>Created At</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="patient in patients">
+							<th>{{$index + 1}}</th>
+							<td>
+								<a ui-sref="app.patient-view({patientId: patient._id})">
+									{{patient.firstName}} {{patient.lastName}}
+								</a>
+							</td>
+							<td>{{patient.email}}</td>
+							<td>{{patient.age}}</td>
+							<td>{{patient.mobile}}</td>
+							<td>{{patient.createdAt | date: 'dd-MM-yyyy'}}</td>
+							<td class="action-links">
+								<a ui-sref="app.patient-view({patientId: patient._id})" class="edit">
+									<i class="linecons-eye"></i>
+									View Patient
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div> --->
+
+	</div>
+</div>

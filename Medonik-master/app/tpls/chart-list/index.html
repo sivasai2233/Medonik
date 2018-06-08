@@ -1,0 +1,56 @@
+<page-title
+	ng-if="layoutOptions.pageTitles"
+	title="Charts"
+	description="List of All Chart's">
+</page-title>
+
+<div class="row">
+	<div class="col-md-12">
+		<a class="btn btn-success" ui-sref="app.chart-form" role="button">Add Chart</a>
+		<a ui-sref="app.chart-view">view charts</a>
+		<div ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
+		<!-- <div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="col-md-2 col-sm-4 pull-right-sm">
+					<div class="action-buttons">
+					</div>
+				</div>
+			</div>
+
+			<div class="panel-body">
+				<table class="table table-hover members-table middle-align table-responsive">
+					<thead>
+						<tr>
+							<th>S.No</th>
+							<th>Chart</th>
+							<th>Min Value</th>
+							<th>Max Value</th>
+							<th>Minor Ticks</th>
+							<th>Major Ticks</th>
+							<th>Threshold Value</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="chart in charts">
+							<th>{{$index + 1}}</th>
+							<td>{{chart.chartName}}</td>
+							<td>{{chart.minValue}}</td>
+							<td>{{chart.maxValue}}</td>
+							<td>{{chart.minorTicks}}</td>
+							<td>{{chart.majorTicks}}</td>
+							<td>{{chart.thresholdValue}}</td>
+							<td class="action-links">
+								<a ui-sref="app.chart-edit({chartId: chart._id})" class="edit">
+									<i class="linecons-eye"></i>
+									Edit Chart
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div> -->
+	</div>
+</div>

@@ -1,0 +1,77 @@
+<page-title
+	ng-if="layoutOptions.pageTitles"
+	title="Doctors"
+	description="List of All Doctors">
+</page-title>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="action-buttons">
+			<a class="btn btn-success" ui-sref="app.doctor-form" role="button">Add Doctor</a>
+		</div>
+		<div ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
+		<!-- <div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="col-md-2 col-sm-4 pull-right-sm">
+					<div class="action-buttons">
+						<a class="btn btn-block btn-secondary" ui-sref="app.doctor-form" role="button">Add Doctor</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel-body">
+
+				<p ng-hide="doctors.length > 0">
+					No records found.
+				</p>
+
+				<table class="table table-hover members-table middle-align" ng-show="doctors.length > 0">
+					<thead>
+						<tr>
+							<th>S.No</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Mobile</th>
+							<th>Alternate Mobile</th>
+							<th>Specialization</th>
+							<th>Created At</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="doctor in doctors">
+							<th>{{$index + 1}}</th>
+							<td>
+								<a ui-sref="app.doctor-view({doctorId: doctor.basicInfo._id})">
+									{{doctor.basicInfo.firstName}} {{doctor.basicInfo.lastName}}
+								</a>
+							</td>
+							<td>{{doctor.basicInfo.email}}</td>
+							<td>{{doctor.basicInfo.mobile}}</td>
+							<td>{{doctor.basicInfo.alternateMobile}}</td>
+							<td>{{doctor.specializationInfo.specialization}}</td>
+							<td>{{doctor.createdAt | date: 'dd-MM-yyyy'}}</td>
+							<td class="action-links">
+								<a ui-sref="app.doctor-edit({doctorId: doctor.basicInfo._id})" class="primary">
+									<i class="linecons-pencil"></i>
+									Edit Doctor
+								</a>
+
+								<a ui-sref="app.doctor-view({doctorId: doctor.basicInfo._id})" class="edit">
+									<i class="linecons-eye"></i>
+									View Doctor
+								</a>
+
+								<a class="delete">
+									<i class="linecons-trash"></i>
+									Delete
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div> -->
+	</div>
+</div>

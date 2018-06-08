@@ -1,0 +1,13 @@
+<div class="row">
+    <h2>List of charts</h2>
+    <div class="col-md-6" ng-repeat="chartInfo in charts">
+        <div class="row">
+            <input type="number" name="" value="" ng-model="chartInfo.value">
+            <button type="button" class="btn btn-primary" ng-click="updateChartValue(chartInfo)">update</button>
+        </div>
+        <div d3-gauge="chartInfo" chartValue="chartValue" id="chart" class="col-md-6"></div>
+    </div>
+    <!-- <div ng-repeat="chartInfo in charts" d3-gauge="chartInfo" chartValue="50" id="chart" class="col-md-6">
+
+    </div> -->
+</div>

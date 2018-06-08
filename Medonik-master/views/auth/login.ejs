@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="description" content="Xenon Boostrap Admin Panel" />
+   <meta name="author" content="" />
+
+   <title>Medonik | Login</title>
+   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
+   <link rel="stylesheet" href="/assets/css/bootstrap.css">
+   <link rel="stylesheet" href="/assets/css/xenon-core.css">
+   <link rel="stylesheet" href="/assets/css/xenon-forms.css">
+   <link rel="stylesheet" href="/assets/css/xenon-components.css">
+   <link rel="stylesheet" href="/assets/css/xenon-skins.css">
+   <link rel="stylesheet" href="/assets/css/custom.css">
+   <style type="text/css" media="screen">
+      body {
+         background-color: #FE590D;
+         background-size: 100%
+      }
+   </style>
+</head>
+
+<body>
+   <div class="login-container">
+      <div class="row">
+         <div class="col-md-3"></div>
+         <div class="col-md-6 col-sm-6" style="margin-top: 100px">
+            <!-- Errors container -->
+            <div class="errors-container">
+               <% if (message.length > 0) { %>
+                  <div class="alert alert-danger"><%= message %></div>
+               <% } %>
+            </div>
+
+            <!-- Add class "fade-in-effect" for login form effect -->
+            <form method="post" action="/login" role="form" id="login" class="login-form fade-in-effect">
+
+               <div class="login-header">
+                  <a href="/login" class="logo">
+                     <h1>Medonik Login</h1>
+                  </a>
+               </div>
+
+
+               <div class="form-group">
+                  <label class="control-label" for="email">Email</label>
+                  <input type="text" class="form-control" name="email" id="email"  autocomplete="off" />
+               </div>
+
+               <div class="form-group">
+                  <label class="control-label" for="passwd">Password</label>
+                  <input type="password" class="form-control" name="password" id="passwd" autocomplete="off" />
+               </div>
+
+               <div class="form-group">
+                  <button type="submit" class="btn btn-primary  btn-block text-left">
+                     <i class="fa-lock"></i>
+                     Log In
+                  </button>
+               </div>
+
+               <div class="login-footer">
+                  <a href="">Forgot your password?</a>
+               </div>
+            </form>
+         </div>
+         <div class="col-md-3"></div>
+      </div>
+   </div>
+</body>
+</html>

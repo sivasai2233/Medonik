@@ -1,0 +1,31 @@
+{
+  "name": "medonik-master",
+  "version": "1.0.0",
+  "description": "Health care application",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "express-session": "^1.15.6",
+    "http-errors": "^1.6.3",
+    "mail-notifier": "^0.5.0",
+    "mongoose": "^5.0.13",
+    "morgan": "~1.9.0",
+    "multer": "^1.3.0",
+    "nodemailer": "^4.6.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "underscore": "^1.9.0"
+  },
+  "author": "siva sai",
+  "license": "ISC"
+}

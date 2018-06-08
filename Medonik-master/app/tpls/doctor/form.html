@@ -1,0 +1,208 @@
+{{doctor}}
+<ol class="breadcrumb">
+	<li>
+		<a href="#">Home</a>
+	</li>
+	<li>
+		<a ui-sref="app.doctors">Doctors</a>
+	</li>
+	<li class="active" ng-hide="isUpdate"><b>Create</b></li>
+	<li class="active" ng-show="isUpdate">Update / {{doctor.firstName}}</li>
+</ol>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="member-form-add-header" ng-show="isUpdate">
+			<div class="row">
+				<div class="col-md-2 col-sm-4 pull-right-sm">
+
+					<div class="action-buttons">
+						<button ng-click="updateDoctor()" type="button" class="btn btn-block btn-secondary">Save Changes</button>
+						<button ng-click="openPasswordChangeModal('password-update-modal', 'lg');" type="button" class="btn btn-block btn-gray">Change Password</button>
+					</div>
+
+				</div>
+				<div class="col-md-10 col-sm-8">
+
+					<div class="user-img" ng-show="doctor.avatar == undefined">
+						<img src="assets/images/user-4.png" class="img-circle" alt="user-pic" />
+					</div>
+					<div class="user-img" ng-show="doctor.avatar !== undefined">
+						<img src="{{currentImage}}" class="img-circle" alt="user-pic" width="80" height="80" />
+					</div>
+					<div class="user-name">
+						<a href="">{{doctor.firstName}} {{doctor.lastName}}</a>
+						<span>Doctor</span>
+					</div>
+
+				</div>
+			</div>
+			<hr>
+		</div>
+
+		<alert ng-show="showAlert" type="{{alert.status}}" close="alert_1_hide = true" ng-show="alert_1_hide == null">
+			{{alert.message}}
+		</alert>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="field-1" class="control-label">First Name</label>
+					<input type="text" name="first_name" ng-model="doctor.firstName" class="form-control" id="field-1" placeholder="John">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="field-2" class="control-label">Last Name</label>
+					<input type="text" name="last_name" ng-model="doctor.lastName" class="form-control" id="field-2" placeholder="Doe">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12" ng-hide="isUpdate">
+				<div class="form-group">
+					<label for="doc-avatar" class="control-label">Doctor Image</label>
+					<input type="file" name="avatar" file-model="doctor.avatar" class="form-control" id="doc-avatar">
+				</div>
+			</div>
+			<div class="col-md-10" ng-show="isUpdate">
+				<div class="form-group">
+					<label for="doc-avatar" class="control-label">Doctor Image</label>
+					<input type="file" name="avatar" file-model="doctor.avatar" class="form-control" id="doc-avatar">
+				</div>
+			</div>
+			<div class="col-md-2" ng-show="isUpdate">
+				<button type="button" ng-click="uploadImage(doctor, 'doctor')" class="btn btn-primary">Upload</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="field-8" class="control-label">Location</label>
+					<select name="" id="field-8" class="form-control" ng-model="doctor.specializationId">
+						<option value="">Select Specialization</option>
+						<option ng-repeat="specialization in specializations" value="{{specialization._id}}">{{specialization.specialization}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="field-6" class="control-label">Mobile</label>
+					<input type="text" name="mobile" ng-model="doctor.mobile" class="form-control" id="field-6" placeholder="Mobile">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="field-16" class="control-label">Alternate Mobile</label>
+					<input type="text" name="altermobile" ng-model="doctor.alternateMobile" class="form-control" id="field-16" placeholder="Alternate Mobile">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="field-7" class="control-label">Email</label>
+					<input type="text" name="email" ng-model="doctor.email" class="form-control" id="field-7" placeholder="Email">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="field-11" class="control-label">Office Address</label>
+					<textarea name="ofzaddress" id="field-11" class="form-control" rows="3" ng-model="doctor.officeAddress"></textarea>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="field-10" class="control-label">Residential Address</label>
+					<textarea name="resaddress" id="field-10" class="form-control" rows="3" ng-model="doctor.residentialAddress"></textarea>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="field-17" class="control-label">Graduation Year</label>
+					<input type="text" name="graduation" ng-model="doctor.graduationYear" class="form-control" id="field-17" placeholder="Graduation Year">
+				</div>
+			</div>
+		</div>
+
+		<div class="row" ng-hide="isUpdate">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="field-4" class="control-label">Password</label>
+					<input type="password" ng-model="doctor.password" class="form-control" id="field-4" placeholder="Enter your password">
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="field-5" class="control-label">Confirm Password</label>
+					<input type="password" ng-model="doctor.confirmPassword" class="form-control" id="field-5" placeholder="Confirm password">
+				</div>
+			</div>
+		</div>
+
+		<div class="pull-right-sm" ng-hide="isUpdate">
+			<button type="button" class="btn btn-block btn-secondary" ng-click="createDoctor()">Create</button>
+		</div>
+
+	</div>
+
+</div>
+
+<script type="text/ng-template" id="password-update-modal">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Update Password</h4>
+	</div>
+
+	<div class="modal-body">
+		<alert ng-show="showAlert" type="{{alert.status}}" close="alert_1_hide = true" ng-show="alert_1_hide == null">
+			{{alert.message}}
+		</alert>
+
+		<div class="row">
+			<div class="col-md-12" ng-show="isAdmin">
+				<div class="form-group">
+					<label for="current_pwd" class="control-label">Current Password</label>
+					<input type="text" name="current_pwd" ng-model="credential.currentPassword" class="form-control" id="current_pwd" placeholder="Enter your current password">
+				</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="new_pwd" class="control-label">Password</label>
+					<input type="text" name="new_pwd" ng-model="credential.newPassword" class="form-control" id="new_pwd" placeholder="Enter your new password">
+				</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="confirm_new_pwd" class="control-label">Confirm Password</label>
+					<input type="text" name="confirm_new_pwd" ng-model="credential.confirmNewPassword" class="form-control" id="confirm_new_pwd" placeholder="Confirm your new password">
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="currentModal.close();">
+			Close
+		</button>
+		<button type="button" class="btn btn-info" ng-click="updatePassword()">
+			Update
+		</button>
+	</div>
+</script>

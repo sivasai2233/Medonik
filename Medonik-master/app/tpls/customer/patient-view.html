@@ -1,0 +1,399 @@
+<h1>Patient: {{patientInfo.basicInfo.firstName}} {{patientInfo.basicInfo.lastName}}</h1>
+<ol class="breadcrumb">
+	<li>
+		<a href="#">Home</a>
+	</li>
+	<li>
+		<a ui-sref="app.customers">Customers</a>
+	</li>
+	<li>
+		<a ui-sref="app.customer-view({customerId: customerId})">{{info.customer.firstName}}</a>
+	</li>
+	<li class="active">{{patientInfo.basicInfo.firstName}}</li>
+</ol>
+
+<div class="panel panel-headerless">
+	<div class="panel-body">
+
+		<div class="member-form-add-header">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+
+					<div class="user-img" ng-show="patientInfo.basicInfo.avatar == undefined">
+						<img src="assets/images/user-4.png" class="img-circle" alt="user-pic" />
+					</div>
+					<div class="user-img" ng-show="patientInfo.basicInfo.avatar !== undefined">
+						<img src="{{patientInfo.basicInfo.avatar}}" class="img-circle" alt="user-pic" width="80" height="80"/>
+					</div>
+					<div class="user-name">
+						<h4>
+							<strong>
+								{{patientInfo.basicInfo.firstName}} {{patientInfo.basicInfo.lastName}}
+							</strong>
+						</h4>
+						<span>{{patientInfo.locationInfo.location}}</span>
+					</div>
+
+				</div>
+				<div class="col-md-4 col-sm-4m">
+					<div class="row">
+						<div class="col-md-6">
+							<h5>
+								{{patientInfo.basicInfo.email}}
+								<br />
+								<small>Email</small>
+							</h5>
+						</div>
+						<div class="col-md-6">
+							<h5>
+								{{patientInfo.basicInfo.mobile}}
+								<br />
+								<small>Mobile</small>
+							</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<h5>
+								{{patientInfo.basicInfo.age}}
+								<br />
+								<small>Age</small>
+							</h5>
+						</div>
+						<div class="col-md-6">
+							<h5>
+								{{patientInfo.basicInfo.createdAt | date: 'dd-MM-yyyy'}}
+								<br />
+								<small>Created At</small>
+							</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4m">
+					<div class="row">
+						<div class="col-md-12">
+							<h5>
+								{{patientInfo.basicInfo.address}}
+								<br />
+								<small>Address</small>
+							</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<a ui-sref="app.cus-patient-analysis-report({customerId: urlCustomerId, patientId: patientInfo.basicInfo._id})">
+								<u>View Analysis Report</u>
+							</a>
+						</div>
+						<div class="col-md-6">
+							<a ui-sref="app.cus-patient-health-card({customerId: urlCustomerId, patientId: patientInfo.basicInfo._id})">
+								<u>View Health Card</u>
+							</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<a ui-sref="app.cus-patient-medication({customerId: urlCustomerId, patientId: patientInfo.basicInfo._id})">
+								<u>View Medications</u>
+							</a>
+						</div>
+						<div class="col-md-6">
+							<a ui-sref="app.cus-patient-test-result({customerId: urlCustomerId, patientId: patientInfo.basicInfo._id})">
+								<u>View Test Result</u>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<a href="" ng-click="openAssignModal('assign-form-modal', 'lg', false, true)">
+	<u>Assign Doctor</u>
+</a> &nbsp
+<a href="" ng-click="openAssignModal('assign-form-modal', 'lg', true, false)">
+	<u>Assign FOS</u>
+</a>
+</br>
+</br>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Assigned Doctor
+	</div>
+
+	<div class="panel-body">
+		<!-- Alert -->
+		<alert ng-show="showAlert" type="{{alert.status}}" close="alert_1_hide = true" ng-show="alert_1_hide == null">
+			{{alert.message}}
+		</alert>
+		<div ng-show="assignedDoctorList.length == 0">
+			No records found.
+		</div>
+
+		<div class="col-md-4" ng-repeat="assignDoc in assignedDoctorList">
+			<div class="card" style="width: 250px;">
+				<img ng-show="assignDoc.docInfo.avatar == undefined" class="card-img" src="assets/images/user-1.png" alt="Card image" style="width:100%">
+		    	<img ng-show="assignDoc.docInfo.avatar !== undefined" class="card-img" src="{{assignDoc.docInfo.avatar}}" alt="Card image" style="width:100%">
+		    	<div class="card-container">
+		      		<h4 class="card-title">{{assignDoc.docInfo.firstName}} {{assignDoc.docInfo.lastName}}</h4>
+					<span>Doctor</span>
+					</br></br>
+					<button type="button" class="btn btn-primary" ng-click="openProfileModal('profile-modal', 'lg', assignDoc.docInfo._id, true)">See Profile</button>
+		    	</div>
+		  	</div>
+			</br>
+			</br>
+		</div>
+
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Assigned FOS
+	</div>
+
+	<div class="panel-body">
+		<!-- Alert -->
+		<alert ng-show="showAlert" type="{{alert.status}}" close="alert_1_hide = true" ng-show="alert_1_hide == null">
+			{{alert.message}}
+		</alert>
+		<div ng-show="assignedFosList.length == 0">
+			No records found.
+		</div>
+
+		<div class="col-md-4" ng-repeat="assignFos in assignedFosList">
+			<div class="card" style="width: 250px;">
+				<img ng-show="assignFos.fosInfo.avatar == undefined" class="card-img" src="assets/images/user-1.png" alt="Card image" style="width:100%">
+		    	<img ng-show="assignFos.fosInfo.avatar !== undefined" class="card-img" src="{{assignFos.fosInfo.avatar}}" alt="Card image" style="width:100%">
+		    	<div class="card-container">
+		      		<h4 class="card-title">{{assignFos.fosInfo.firstName}} {{assignFos.fosInfo.lastName}}</h4>
+					<span>FOS</span>
+					</br></br>
+					<button type="button" class="btn btn-primary" ng-click="openProfileModal('profile-modal', 'lg', assignFos.fosInfo._id, false)">See Profile</button>
+		    	</div>
+		  	</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- Assign Modal -->
+<script type="text/ng-template" id="assign-form-modal">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Assign {{assignName}}</h4>
+	</div>
+
+	<div class="modal-body">
+		<alert ng-show="showAlert" type="{{alert.status}}" close="alert_1_hide = true" ng-show="alert_1_hide == null">
+			{{alert.message}}
+		</alert>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group" ng-show="isFos">
+					<label for="cus-serv-loc">FOS</label>
+					<select id="cus-serv-loc" class="form-control" ng-model="assignObj.fosId">
+						<option value="">Select FOS</option>
+						<option ng-repeat="fos in fosList" value="{{fos._id}}">{{fos.firstName}} {{fos.lastName}}</option>
+					</select>
+				</div>
+				<div class="form-group" ng-show="!isFos">
+					<label for="cus-serv-loc">Doctor</label>
+					<select id="cus-serv-loc" class="form-control" ng-model="assignObj.doctorId">
+						<option value="">Select Doctor</option>
+						<option ng-repeat="doctor in doctors" value="{{doctor.basicInfo._id}}">{{doctor.basicInfo.firstName}} {{doctor.basicInfo.lastName}} - {{doctor.specializationInfo.specialization}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="currentModal.close();">
+			Close
+		</button>
+		<button type="button" class="btn btn-info" ng-click="assignFOSAndDoctor()">
+			Assign
+		</button>
+	</div>
+</script>
+
+<!-- Profile Modal -->
+<script type="text/ng-template" id="profile-modal">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Assign {{assignName}}</h4>
+	</div>
+
+	<div class="modal-body">
+		<alert ng-show="showAlert" type="{{alert.status}}" close="alert_1_hide = true" ng-show="alert_1_hide == null">
+			{{alert.message}}
+		</alert>
+
+		<div class="member-form-add-header" ng-show="isDoc">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+
+					<div class="user-img" ng-show="doctor.basicInfo.avatar == undefined">
+						<img src="assets/images/user-4.png" class="img-circle" alt="user-pic" />
+					</div>
+					<div class="user-img" ng-show="doctor.basicInfo.avatar !== undefined">
+						<img src="{{doctor.basicInfo.avatar}}" class="img-circle" alt="user-pic" width="80" height="80" />
+					</div>
+					<div class="user-name">
+						<h4>
+							<strong>
+								{{doctor.basicInfo.firstName}} {{doctor.basicInfo.lastName}}
+							</strong>
+						</h4>
+						<span>{{doctor.specialization.specialization}}</span>
+					</div>
+
+				</div>
+				<div class="col-md-4 col-sm-4">
+
+					<div class="row">
+						<div class="col-md-6">
+							<h5>
+								{{doctor.basicInfo.email}}
+								<br />
+								<small>Email</small>
+							</h5>
+						</div>
+						<div class="col-md-6">
+							<h5>
+								{{doctor.basicInfo.mobile}}
+								<br />
+								<small>Mobile</small>
+							</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<h5>
+								{{doctor.basicInfo.alternateMobile}}
+								<br />
+								<small>Alternate Mobile</small>
+							</h5>
+						</div>
+						<div class="col-md-6">
+							<h5>
+								{{doctor.basicInfo.graduationYear}}
+								<br />
+								<small>Graduation Year</small>
+							</h5>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-4 col-sm-4">
+
+					<div class="row">
+
+						<div class="col-md-12">
+							<h5>
+								{{doctor.basicInfo.officeAddress}}
+								<br />
+								<small>Office Address</small>
+							</h5>
+						</div>
+
+						<div class="col-md-12">
+							<h5>
+								{{doctor.basicInfo.residentialAddress}}
+								<br />
+								<small>Residential Address</small>
+							</h5>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="member-form-add-header" ng-show="!isDoc">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="user-img" ng-show="fos.basicInfo.avatar == undefined">
+						<img src="assets/images/user-4.png" class="img-circle" alt="user-pic" />
+					</div>
+					<div class="user-img" ng-show="fos.basicInfo.avatar !== undefined">
+						<img src="{{fos.basicInfo.avatar}}" class="img-circle" alt="user-pic" width="80" height="80" />
+					</div>
+					<div class="user-name">
+						<h4>
+							<strong>
+								{{fos.basicInfo.firstName}} {{fos.basicInfo.lastName}}
+							</strong>
+						</h4>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4">
+
+					<div class="row">
+						<div class="col-md-6">
+							<h5>
+								{{fos.basicInfo.email}}
+								<br />
+								<small>Email</small>
+							</h5>
+						</div>
+						<div class="col-md-12">
+							<h5>
+								{{fos.basicInfo.address}}
+								<br />
+								<small>Address</small>
+							</h5>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div class="row">
+						<div class="col-md-6">
+							<h5>
+								{{fos.basicInfo.mobile}}
+								<br />
+								<small>Mobile</small>
+							</h5>
+						</div>
+						<div class="col-md-6">
+							<h5>
+								{{fos.basicInfo.alternateMobile}}
+								<br />
+								<small>Alternate Mobile</small>
+							</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<h5>
+								{{fos.basicInfo.emergencyMobile}}
+								<br />
+								<small>Emergency Mobile</small>
+							</h5>
+						</div>
+						<div class="col-md-6">
+							<h5>
+								{{fos.basicInfo.createdAt | date: 'dd-MM-yyyy'}}
+								<br />
+								<small>Created At</small>
+							</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="currentModal.close();">
+			Close
+		</button>
+	</div>
+</script>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="description" content="Xenon Boostrap Admin Panel" />
+   <meta name="author" content="" />
+
+   <title>Medonik | Login</title>
+   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
+   <link rel="stylesheet" href="/assets/css/bootstrap.css">
+   <link rel="stylesheet" href="/assets/css/xenon-core.css">
+   <link rel="stylesheet" href="/assets/css/xenon-forms.css">
+   <link rel="stylesheet" href="/assets/css/xenon-components.css">
+   <link rel="stylesheet" href="/assets/css/xenon-skins.css">
+   <link rel="stylesheet" href="/assets/css/custom.css">
+   <style type="text/css" media="screen">
+      /*.login-container {
+         margin-top: 50px
+      }*/
+   </style>
+</head>
+<body>
+   <div class="login-container">
+      <div class="row">
+         <div class="col-sm-6"></div>
+         <div class="col-sm-6">
+            <!-- Errors container -->
+            <div class="errors-container">
+
+            </div>
+
+            <!-- Add class "fade-in-effect" for login form effect -->
+            <form method="post" action="/customer/signup" role="form" id="login" class="login-form fade-in-effect">
+
+               <div class="login-header">
+                  <a href="#/app/dashboard-variant-1" class="logo">
+                     <h1>Medonik Signup</h1>
+                  </a>
+               </div>
+
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label class="control-label" for="fname">First Name</label>
+                        <input type="text" class="form-control" name="first_name" id="fname" autocomplete="off" />
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label class="control-label" for="lname">Last Name</label>
+                        <input type="text" class="form-control" name="last_name" id="lname" autocomplete="off" />
+                     </div>
+                  </div>
+               </div>
+
+               <div class="form-group">
+                  <label class="control-label" for="location">Location</label>
+                  <input type="text" class="form-control" name="location" id="location" autocomplete="off" />
+               </div>
+
+               <div class="form-group">
+                  <label class="control-label" for="email">Email</label>
+                  <input type="text" class="form-control" name="email" id="email" autocomplete="off" />
+               </div>
+
+               <div class="form-group">
+                  <label class="control-label" for="mobile">Mobile</label>
+                  <input type="text" class="form-control" name="mobile" id="mobile" autocomplete="off" />
+               </div>
+
+               <div class="form-group">
+                  <label class="control-label" for="serv_loc">Service Required Location</label>
+                  <select name="service_location" id="serv_loc" class="form-control" required="required">
+                     <% for (var i = 0; i < locations.length; i++) { %>
+                        <option value="<%= locations[i]._id %>"><%= locations[i].location %></option>
+                     <% } %>
+                  </select>
+               </div>
+
+               <div class="form-group">
+                  <label class="control-label" for="pwd">Password</label>
+                  <input type="password" class="form-control" name="password" id="pwd" autocomplete="off" />
+               </div>
+
+               <div class="form-group">
+                  <label class="control-label" for="cfm_pwd">Confirm Password</label>
+                  <input type="password" class="form-control" name="confirm_password" id="cfm_pwd" autocomplete="off" />
+               </div>
+
+               <div class="form-group">
+                  <button type="submit" class="btn btn-primary  btn-block text-left">
+                     <i class="fa-lock"></i>
+                     Signup
+                  </button>
+               </div>
+
+               <div class="login-footer">
+                  <a href="/login">Already user exist ?</a>
+               </div>
+         </form>
+         </div>
+      </div>
+   </div>
+
+</body>
+</html>

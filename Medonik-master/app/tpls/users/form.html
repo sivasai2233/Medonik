@@ -1,0 +1,123 @@
+<page-title ng-if="layoutOptions.pageTitles" title="Update User"></page-title>
+
+<ol class="breadcrumb">
+	<li>
+		<a ui-sref="app.dashboard">Home</a>
+	</li>
+	<li>
+		<a ui-sref="app.users">Users</a>
+	</li>
+	<li class="active">{{user.firstName}}</li>
+</ol>
+
+<form>
+	<div class="panel panel-headerless">
+		<div class="panel-body">
+
+		<div class="member-form-add-header">
+			<div class="row">
+				<div class="col-md-2 col-sm-4 pull-right-sm">
+
+					<div class="action-buttons">
+						<button ng-click="updateUser()" type="button" class="btn btn-block btn-secondary">Save Changes</button>
+						<button type="reset" class="btn btn-block btn-gray">Reset to Default</button>
+					</div>
+
+				</div>
+				<div class="col-md-10 col-sm-8">
+
+					<div class="user-img" ng-show="user.avatar == undefined">
+						<img src="assets/images/user-4.png" class="img-circle" alt="user-pic" />
+					</div>
+					<div class="user-img" ng-show="user.avatar !== undefined">
+						<img src="{{currentImage}}" class="img-circle" alt="user-pic" width="80" height="80" />
+					</div>
+					<div class="user-name">
+						<a href="">{{user.firstName}} {{user.lastName}}</a>
+						<span>Administrator</span>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<alert ng-show="showAlert" type="{{alert.status}}" close="alert_1_hide = true" ng-show="alert_1_hide == null">
+			{{alert.message}}
+		</alert>
+
+		<div class="member-form-inputs">
+
+			<div class="row">
+				<div class="col-sm-3">
+					<label class="control-label" for="firstname">First Name</label>
+				</div>
+				<div class="col-sm-9">
+					<input type="text" ng-model="user.firstName" class="form-control" name="firstname" id="firstname"/>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3">
+					<label class="control-label" for="lastname">Last Name</label>
+				</div>
+				<div class="col-sm-9">
+					<input type="text" ng-model="user.lastName" class="form-control" name="lastname" id="lastname"/>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3">
+					<label class="control-label" for="avatar">Image</label>
+				</div>
+				<div class="col-sm-6">
+					<input type="file" file-model="user.avatar" class="form-control" name="avatar" id="avatar"/>
+				</div>
+				<div class="col-sm-3">
+					<button type="button" ng-click="uploadImage(user)" class="btn btn-primary">Upload</button>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3">
+					<label class="control-label" for="email">Email</label>
+				</div>
+				<div class="col-sm-9">
+					<input type="text" ng-model="user.email" class="form-control" name="email" id="email"/>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3">
+					<label class="control-label" for="mobile">Mobile</label>
+				</div>
+				<div class="col-sm-9">
+					<input type="text" ng-model="user.mobile" class="form-control" name="mobile" id="mobile"/>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3">
+					<label class="control-label" for="password">Password</label>
+				</div>
+				<div class="col-sm-9">
+					<input type="text" ng-model="user.password" class="form-control" name="password" id="password"/>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3">
+					<label class="control-label" for="status">Status</label>
+				</div>
+				<div class="col-sm-9">
+					<select name="status" ng-model="user.status" id="status" class="form-control">
+						<option value="0">In Active</option>
+						<option value="1">Active</option>
+					</select>
+				</div>
+			</div>
+
+		</div>
+
+		</div>
+	</div>
+</form>

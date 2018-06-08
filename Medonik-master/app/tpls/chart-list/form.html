@@ -1,0 +1,121 @@
+<page-title
+	ng-if="layoutOptions.pageTitles"
+	title="Create Chart">
+</page-title>
+
+<ol class="breadcrumb bc-1" xe-breadcrumb>
+	<li>
+		<a ui-sref="app.dashboard">Home</a>
+	</li>
+	<li>
+		<a ui-sref="app.chartList">Charts</a>
+	</li>
+	<li class="active" ng-hide="isEdit">Create</li>
+	<li class="active" ng-show="isEdit">Update : {{chart.chartName}}</li>
+</ol>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<!-- Alert -->
+		<alert ng-show="showAlert" type="{{alert.status}}" close="alert_1_hide = true" ng-show="alert_1_hide == null">
+			{{alert.message}}
+		</alert>
+        <form action="" method="POST" role="form">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                       <label for="">Chart Name</label>
+                       <input type="text" ng-model="chart.chartName" class="form-control" id="" placeholder="Enter chart name">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                       <label for="">Min Value</label>
+                       <input type="number" ng-model="chart.minValue" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                       <label for="">Max Value</label>
+                       <input type="number" ng-model="chart.maxValue" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                       <label for="">Major Ticks</label>
+                       <input type="number" ng-model="chart.majorTicks" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                       <label for="">Minor Ticks</label>
+                       <input type="number" ng-model="chart.minorTicks" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+			<div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                       <label for="">Chart Value</label>
+                       <input type="number" ng-model="chart.value" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <button type="button" class="btn btn-success" ng-click="newThreshold()">Add</button>
+                    <div class="row" ng-repeat="threshold in thresholdValues">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                               <label for="">Start Value</label>
+                               <input type="number" ng-model="threshold.startValue" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                               <label for="">End Value</label>
+                               <input type="number" ng-model="threshold.endValue" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                               <label for="">Color</label>
+                               <input type="color" ng-model="threshold.color" class="form-control">
+                            </div>
+                        </div>
+						<div class="col-md-4">
+                            <div class="form-group">
+                               <label for="">Classfication</label>
+							   <select id="" class="form-control" ng-model="threshold.classfication">
+		   							<option value="">Select classfication</option>
+									<option value="poor">Poor</option>
+									<option value="below_average">Below Average</option>
+		   							<option value="average">Average</option>
+									<option value="above_average">Above Average</option>
+									<option value="good">Good</option>
+									<option value="excellent">Excellent</option>
+		   						</select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                               <button type="button" class="btn btn-danger" ng-click="removeThreshold(threshold.id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+			<button type="submit" class="btn btn-primary" ng-click="createChart()" ng-hide="isEdit">Submit</button>
+            <button type="submit" class="btn btn-primary" ng-click="updateChart()" ng-show="isEdit">Update</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+{{appointment}}
+	<ol class="breadcrumb">
+		<li>
+			<a href="#">Home</a>
+		</li>
+		<li>
+			<a ui-sref="app.appointments">Appointments</a>
+		</li>
+		<li class="active">Create</li>
+	</ol>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Add Appointment
+		</div>
+
+		<div class="panel-body">
+		<div class="row">
+			<div class="col-md-6">
+
+				<div class="form-group">
+					<label for="field-1" class="control-label">First Name</label>
+
+					<input type="text" name="first_name" ng-model="appointment.firstName" class="form-control" id="field-1" placeholder="John">
+				</div>
+
+			</div>
+			<div class="col-md-6">
+
+				<div class="form-group">
+					<label for="field-2" class="control-label">Last Name</label>
+
+					<input type="text" name="last_name" ng-model="appointment.lastName" class="form-control" id="field-2" placeholder="Doe">
+				</div>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="field-6" class="control-label">Mobile</label>
+					<input type="text" name="mobile" ng-model="appointment.mobile" class="form-control" id="field-6" placeholder="Mobile">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="form-group">
+					<label for="field-7" class="control-label">Email</label>
+
+					<input type="text" name="email" ng-model="appointment.email" class="form-control" id="field-7" placeholder="Email">
+				</div>
+
+			</div>
+		</div>
+
+	<!-- <div class="row">
+		 <div class="form-group" ng-show="!isFos">
+ 					<label for="cus-serv-loc">Doctor</label>
+ 					<select id="cus-serv-loc" class="form-control" ng-model="appointment.doctorId">
+ 						<option value="">Select Doctor</option>
+ 						<option ng-repeat="doctor in doctors" value="{{doctor.basicInfo._id}}">{{doctor.basicInfo.firstName}} {{doctor.basicInfo.lastName}} - {{doctor.specializationInfo.specialization}}</option>
+ 					</select>
+ 				</div>
+			</div>
+		</div> -->
+
+
+    <!--Dropdown-->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="field-8" class="control-label">Specialization</label>
+					<select name="" id="field-8" class="form-control" ng-model="appointment.specializationId">
+						<option value="">Select Specialization</option>
+						<option ng-repeat="specialization in specializations" value="{{specialization._id}}">{{specialization.specialization}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+    <!--Date and Time-->
+		<!-- <div class="form-group">
+ 				<label class="control-label" for="field-5">Date Range with Timepicker</label>
+ 					<div>
+ 						  <input type="text" id="field-5" name="date" ng-model="appointment.date" class="form-control daterange" data-time-picker="true" data-time-picker-increment="5" data-format="MM/DD/YYYY h:mm A"/>
+ 					</div>
+ 	  </div> -->
+
+   <!--Reason-->
+	<div class="row">
+			<div class="col-md-12">
+           <div class="form-group">
+					 <label for="field-7" class="control-label">Reason</label>
+					 <textarea name="reason" id="inputAddress" class="form-control" rows="3" ng-model="appointment.reason"></textarea>
+				</div>
+			</div>
+	</div>
+
+		<div class="pull-right-sm">
+			<button type="button" class="btn btn-block btn-secondary" ng-click="createAppointment(appointment)">Submit</button>
+		</div>
+	</div>
+</div>

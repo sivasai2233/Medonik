@@ -1,0 +1,56 @@
+<page-title
+	ng-if="layoutOptions.pageTitles"
+	title="Customer"
+	description="List of All Customers">
+</page-title>
+
+<div class="row">
+	<div class="col-md-12">
+		<!-- User Create Btn -->
+		<button ui-sref="app.customer-form" class="btn btn-secondary">Create Customer</button>
+		<div ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
+
+		<!-- <div class="panel panel-default">
+			<div class="panel-body">
+				<table cellspacing="0" class="table table-hover members-table middle-align">
+					<thead>
+						<tr>
+							<th>S.No</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Mobile</th>
+							<th>Location</th>
+							<th>Created At</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="customer in customers">
+							<th>{{$index + 1}}</th>
+							<td>
+								<a ui-sref="app.customer-view({customerId: customer._id})" title="">
+									{{customer.firstName}} {{customer.lastName}}
+								</a>
+							</td>
+							<td>{{customer.email}}</td>
+							<td>{{customer.mobile}}</td>
+							<td>{{customer.location}}</td>
+							<td>{{customer.createdAt | date: 'dd-MM-yyyy'}}</td>
+							<td class="action-links">
+								<a ui-sref="app.customer-update({customerId: customer._id})" class="primary">
+									<i class="linecons-pencil"></i>
+									Edit
+								</a>
+								<a ui-sref="app.customer-view({customerId: customer._id})" class="edit">
+									<i class="linecons-eye"></i>
+									View
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div> -->
+
+	</div>
+</div>
